@@ -25,19 +25,30 @@ htmlTag.addEventListener('keyup', (event) => {
 
 const playerCharacter = document.querySelector('#player')
 
+const moveCharacter = (direction) => {
+  if (!['left', 'right', 'up', 'down'].includes(direction)) {
+    return
+  }
+
+  const axis = ['up', 'down'].includes(direction) ? 'y' : 'x'
+  const distanceFactor = ['left', 'up'].includes(direction) ? '-1' : 1
+
+  const currentPosition = playerCharacter.getAttribute(axis)
+  playerCharacter.setAttribute(
+    axis,
+    parseInt(currentPosition) + distanceFactor * 10
+  )
+}
+
 function tick() {
   if (isKeyPressed.ArrowUp) {
-    const currentY = playerCharacter.getAttribute('y')
-    playerCharacter.setAttribute('y', parseInt(currentY) - 10)
+    moveCharacter('up')
   } else if (isKeyPressed.ArrowDown) {
-    const currentY = playerCharacter.getAttribute('y')
-    playerCharacter.setAttribute('y', parseInt(currentY) + 10)
+    moveCharacter('down')
   } else if (isKeyPressed.ArrowLeft) {
-    const currentX = playerCharacter.getAttribute('x')
-    playerCharacter.setAttribute('x', parseInt(currentX) - 10)
+    moveCharacter('left')
   } else if (isKeyPressed.ArrowRight) {
-    const currentX = playerCharacter.getAttribute('x')
-    playerCharacter.setAttribute('x', parseInt(currentX) + 10)
+    moveCharacter('right')
   }
 }
 
