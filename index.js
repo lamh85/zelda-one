@@ -14,7 +14,6 @@ const isKeyPressed = {
 
 htmlTag.addEventListener('keydown', (event) => {
   const eventKey = event.key
-  console.log(eventKey)
   isKeyPressed[eventKey] = true
 })
 
