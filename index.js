@@ -40,16 +40,29 @@ const moveCharacter = (direction) => {
   )
 }
 
+const detectKeyPressOnTick = () => {
+  let keysDetected = 0
+
+  ;['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].forEach(
+    (keyPressName) => {
+      if (keysDetected === 2) {
+        return
+      }
+
+      if (!isKeyPressed[keyPressName]) {
+        return
+      }
+
+      // EG: 'ArrowUp' ==> 'up'
+      const direction = keyPressName.replace('Arrow', '').toLowerCase()
+      moveCharacter(direction)
+      keysDetected++
+    }
+  )
+}
+
 function tick() {
-  if (isKeyPressed.ArrowUp) {
-    moveCharacter('up')
-  } else if (isKeyPressed.ArrowDown) {
-    moveCharacter('down')
-  } else if (isKeyPressed.ArrowLeft) {
-    moveCharacter('left')
-  } else if (isKeyPressed.ArrowRight) {
-    moveCharacter('right')
-  }
+  detectKeyPressOnTick()
 }
 
 setInterval(tick, 100)
