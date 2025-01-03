@@ -64,4 +64,4 @@ function tick() {
   detectKeyPressOnTick()
 }
 
-setInterval(tick, 100)
+setInterval(tick, 50)
