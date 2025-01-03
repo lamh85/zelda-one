@@ -1,10 +1,5 @@
 const htmlTag = document.querySelector('html')
 
-let isUpPressed = false
-let isRightPressed = false
-let isDownPressed = false
-let isLeftPressed = false
-
 const PLAYER_HEIGHT = 50
 const PLAYER_WIDTH = 50
 const SCREEN_WIDTH = 1000
